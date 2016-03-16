@@ -1,0 +1,78 @@
+body{
+    padding: 0;
+    margin: 0;
+}
+
+
+.flex-container {
+	padding:20px;
+    /* We first create a flex layout context */
+    display: flex;
+	
+	flex-flow: row wrap; 
+    justify-content: space-between;
+	
+	align-content:space-around;
+	align-items:center;
+	background:#aad;
+	height:500px;
+
+}
+.flex-item{
+	border:1px pink solid;
+}
+.flex-item:nth-child(1){
+    background: gray;
+
+    width: 150px;
+    height: 120px;
+
+    line-height: 100px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+}
+.flex-item:nth-child(2){
+    background: gray;
+
+    width: 150px;
+    height: 100px;
+
+    line-height: 100px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+}
+.flex-item:nth-child(3){
+    background: gray;
+
+    width: 150px;
+    height: 40px;
+
+    line-height: 40px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+}
+
+.flex-item:nth-child(4){
+	
+    background: gray;
+	border:1px blue solid;
+    width: 150px;
+    height: 200px;
+
+    line-height: 200px;
+    color: white;
+    font-weight: bold;
+    font-size: 3em;
+    text-align: center;
+}
+@media screen and (max-width: 640px) {
+	.flex-item:nth-child(4){
+		order:-1;
+	}
+}
