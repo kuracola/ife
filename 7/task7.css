@@ -1,0 +1,128 @@
+*{
+	padding:0;
+	margin:0;
+	border:0;
+	font-family:微软雅黑;
+}
+
+.wrap{
+	width:1280px;
+	background:white;
+	margin:0 auto;
+}
+.head{
+	height:57px;
+	border-bottom:1px solid #ddd;
+}
+.head .logo{
+	background:url('./img/book.png') no-repeat left;
+	float:left;
+	width:100px;
+	font-size:21px;
+	font-weight:bold;
+	height:57px;
+	line-height:57px;
+	margin-left:50px;
+	padding-left:40px;
+}
+.nav{
+	
+	margin-right:50px;
+	float:right;
+	
+}
+.nav>.btn{
+	font-size:14px;
+	font-family:微软雅黑;
+	color:#777;
+	padding:0 20px;
+	line-height:50px;
+	float:left;
+	height:53px;
+
+}
+.nav>.btn:hover{
+	border-bottom:3px #e74f4d solid;
+}
+.nav>.red{
+	
+	padding-left:20px;
+	background:url('./img/login.png') no-repeat left center;
+	color:#e74f4d;
+}
+.box1{
+	height:700px;
+	color:white;
+	background:url('./img/bg.png');
+}
+.box1:before{
+		content:' ';
+		visibility:hidden;
+		height:0px;
+		overflow:hidden;
+		
+}
+
+
+.box1 .title{
+	font-size:60px;
+	padding-top:250px;
+	padding-left:100px;
+}
+.box1 .content{
+	margin-top:20px;
+	width:320px;
+	font-size:22px;
+
+	padding-left:100px;
+}
+.box1 .signBox{
+	text-align:center;
+	margin-top:80px;
+	line-height:60px;
+	font-size:30px;
+
+	margin-left:100px;
+	background:#e74f4d;
+	width:300px;
+	height:60px;
+}
+.box2{
+	height:250px;
+	
+}
+.box2>.sbox{
+	width:320px;
+	float:left;
+	
+}
+
+.box2 .sbox div:nth-of-type(1){
+	width:42px;
+	height:42px;
+	margin:50px auto;
+	background:url('./img/tag1.png');
+}
+.box2 .sbox div:nth-of-type(2){
+	padding: 0 40px;
+	color:#666;
+	border-right:2px #777 solid;
+}
+.box3{
+	
+
+	font-size:54px;
+	text-align:center;
+	color:#867e7a;
+	background:#ededec;
+	
+	height:300px;
+}
+.box3 div:nth-child(1){
+	margin:0 auto;
+	padding-top:100px;
+
+	height:90px;
+	width:90px;
+	background:url('./img/book-B.png')  no-repeat bottom;
+}
