@@ -1,0 +1,13 @@
+.block{
+	float:left;
+	height:50px;
+	background:pink;
+	margin:10px;
+	text-align:center;
+	line-height:50px;
+	color:white;
+	font-size:30px;
+}
+.queue-wrap{
+
+}
