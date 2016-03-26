@@ -25,16 +25,7 @@ var aqiData = [
 ];
 
 window.onload=(function () {
-	for(var i=0;i<aqiData.length;i++)
-	{
-		aqiData.sort(function(ob1,ob2){
-			if(ob1[1]<ob2[1])
-				return 1;
-			else
-				return -1;
-		});
-	}
-	
+
 	for(var i=0;i<aqiData.length;i++)
 	{
 		if(aqiData[i][1]>60)
