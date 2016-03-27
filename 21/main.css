@@ -1,0 +1,16 @@
+.block{
+	float:left;
+	height:40px;
+	background:pink;
+	margin:10px;
+	text-align:center;
+	line-height:40px;
+	color:white;
+	font-size:30px;
+}
+.tag-view{
+	min-height:50px;
+}
+.queue-wrap{
+
+}
