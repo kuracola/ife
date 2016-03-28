@@ -1,0 +1,35 @@
+.level1{
+	background:white;
+	width:800px;
+	padding:20px;
+	text-align:center;
+	border:1px solid black;
+	float:left;
+}
+.level2{
+	background:white;
+	width:350px;
+	margin:5px;
+	float:left;
+	padding:15px;
+	text-align:center;
+	border:1px solid black;
+}
+.level3{
+	background:white;
+	width:130px;
+	margin:5px;
+	float:left;
+	padding:10px;
+	text-align:center;
+	border:1px solid black;
+}
+.level3 div{
+	background:white;
+	width:28px;
+	margin:3px;
+	float:left;
+	padding:14px;
+	text-align:center;
+	border:1px solid black;
+}
