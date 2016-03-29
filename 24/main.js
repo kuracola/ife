@@ -4,6 +4,7 @@ window.onload=function(){
 	var time=300;
 	var objQueue=[];
 	var timer;
+	var selectedObj=document.createElement('div');
 	function LRN(obj){
 		for(var i=0;i<obj.children.length;i++){
 			if(obj.children[i]!=undefined){
@@ -59,9 +60,29 @@ window.onload=function(){
 		LRN(tree);
 		render();
 	}
-	function startSearch(){
+	function newSelect(e){
 		
+		selectedObj.style.background='white';
+		selectedObj=e.target;
+		selectedObj.style.background='orange';
+		 
+		// if(e.target.style.background=='white')
+			// e.target.style.background='orange';
+		// else{
+			// e.target.style.background='white';
+		// }
 	}
+	function addChild(){
+		var node=document.createElement('div');
+		node.innerHTML=document.getElementById('add-input').value;
+		selectedObj.appendChild(node);
+	}
+	function delSelf(){
+		selectedObj.outerHTML='';
+	}
+	[].forEach.call(document.getElementsByTagName('div'),function(div){div.onclick=newSelect;});
+	document.getElementById('add').onclick=addChild;
+	document.getElementById('del').onclick=delSelf;
 	document.getElementById('nlr').onclick=startNLR;
 	document.getElementById('lrn').onclick=startLRN;
 
