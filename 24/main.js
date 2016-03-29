@@ -33,9 +33,9 @@ window.onload=function(){
 					if(flag==0)
 					{
 						
-						console.log(obj.childNodes[0].nodeValue.replace(/[^a-zA-Z]/g,'').indexOf(input));
+						console.log(obj.childNodes[0].nodeValue.replace(/[^a-zA-Z]/g,''));
 						
-						if(obj.childNodes[0].nodeValue.replace(/[^a-zA-Z]/g,'').indexOf(input)==0 && input!='')
+						if(obj.childNodes[0].nodeValue.replace(/[^a-zA-Z]/g,'')==input )
 						{
 							setTimeout(function(){obj.style.background='blue';},time+=300);
 							flag=1;
