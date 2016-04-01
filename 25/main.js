@@ -79,7 +79,7 @@ window.onload=function(){
 	document.getElementById('del').onclick=function(){
 		selected.outerHTML='';
 	}
-	document.getElementById('add').onclick=function(){
+	document.getElementById('add').onclick=function(){	
 		var newNode =document.createElement('div');
 		newNode.className='index';
 		newNode.setAttribute('con',	document.getElementById('add-input').value);
