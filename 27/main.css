@@ -1,0 +1,113 @@
+.canvas{
+
+	position:relative;
+	height:600px;
+	width:800px;
+	background:url('./bg.jpg') top left;
+	position:relative;
+}
+
+
+.tracks{
+	width:0;
+	top:50%;
+	left:50%;
+	position:relative;
+	transform:rotateX(60deg) rotateY(00deg) rotateZ(0deg);
+	transition:all 1s;
+	transform-style:preserve-3d;
+}
+
+.circle1{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-250px;
+	margin-left:-250px;
+	width: 500px;
+    height: 500px;
+	border:2px gray solid;
+    border-radius: 250px;
+	
+	transition:all 1s;
+	transform-style:preserve-3d;
+}
+.circle2{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-200px;
+	margin-left:-200px;
+
+	width: 400px;
+    height: 400px;
+	border:1px gray solid;
+    border-radius: 200px;
+
+}
+.circle3{
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-150px;
+	margin-left:-150px;
+
+	width: 300px;
+    height: 300px;
+	border:1px gray solid;
+    border-radius: 150px;
+
+}
+.star{
+	background:orange;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-50px;
+	margin-left:-50px;
+
+	width: 100px;
+    height: 100px;
+	border:1px black solid;
+    border-radius: 50px;
+	transform:rotateX(-60deg);
+}
+
+.craft{
+	left:50%;
+	margin-left:-20px;
+	top:50%;
+	margin-top:-10px;
+	position:absolute;
+	transform: rotateZ(00deg);
+	transition:all 0.2s;
+	transform-style:preserve-3d;
+}
+.craft div{
+
+	width:40px;
+	height:20px;
+	border:1px solid black;
+	background:white;
+	border-radius:5px;
+	z-index:200;
+	transform:translateY(200px) rotateZ(0deg);
+	transition:all 1s;
+	transform-style:preserve-3d;
+}
+.circle3 .craft div{
+	transform:translateY(150px) rotateZ(0deg) rotateX(-80deg);
+}
+.circle2 .craft div{
+	transform:translateY(200px) rotateZ(0deg) rotateX(-80deg);
+}
+.circle1 .craft div{
+	transform:translateY(250px) rotateZ(0deg) rotateX(-80deg);
+}
+.cmd{
+	float:left;
+	width:350px;
+	min-height:200px;
+	border-right:1px solid black;
+
+}
