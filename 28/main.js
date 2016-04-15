@@ -124,7 +124,7 @@ window.onload=function(){
 	};
 	function Adapter_for_Bus(own){
 		this.owner=own;
-		
+		this.sessions={};
 	}
 	Adapter_for_Bus.prototype.rawSend=function(content){
 		Channel.prototype.put(content);
@@ -132,12 +132,10 @@ window.onload=function(){
 	Adapter_for_Bus.prototype.receiveMsg=function(baseSignal){
 		
 		var msg=BaseBand_Bus.prototype.deParse(baseSignal);
-	
-			
 			if(baseSignal.length==8 && msg.ID == this.owner.id)
 			{
 				this.owner.adapter.rawSend('1111'+baseSignal.substring(0,4)+'11');
-				log('!Command ['+msg['cmd']+'] is received and done by spacecraft ['+msg['ID']+']'	);
+				log('!Command ['+msg['cmd']+'] is received by spacecraft ['+msg['ID']+']'	);
 				switch(msg['cmd']){
 					case 'stop':
 						this.owner.stat='stop';
@@ -153,9 +151,12 @@ window.onload=function(){
 				}
 			}
 			if(baseSignal.length==10 && msg.ID == this.owner.id){
-				log('Ack from '+parseInt(baseSignal.substring(4,8),2)+' is received.');
+				
+				log('Ack from SpaceCraft'+msg.src+' is received. Stop sending.');
 				//停止发送
-				//clearTimeout(t);
+				console.log(this);
+				console.log(this.sessions);
+				clearInterval(this.sessions[baseSignal.substring(4,8)]);
 			}
 			
 			if(baseSignal.length==16 && this.owner.id==1111 ){
@@ -169,9 +170,11 @@ window.onload=function(){
 	};		
 	Adapter_for_Bus.prototype.sendCMD=function(msg){
 		//var json={'ID':id,'cmd':cmd};
+		var baseSignal=BaseBand_Bus.prototype.parse(msg);
 		
-		Channel.prototype.put(BaseBand_Bus.prototype.parse(msg));
-		
+		this.sessions[baseSignal.substring(0,4)]=setInterval(function(){Channel.prototype.put(BaseBand_Bus.prototype.parse(msg));console.log('channel put');},700);
+		console.log(this);
+		console.log(this.sessions);
 	}
 	/*	
 	 * 指挥官类定义
@@ -179,6 +182,7 @@ window.onload=function(){
 	function Commander(){
 		this.id=1111;
 		this.adapter=new Adapter_for_Bus(this);
+		
 		
 	}
 	commander=new Commander();
@@ -196,6 +200,7 @@ window.onload=function(){
 	Commander.prototype.receiveMsg=function(msg){
 		
 	}
+	//基带信号
 	function BaseBand_Bus(){
 		
 	}
@@ -289,9 +294,8 @@ window.onload=function(){
 			return {'ID':id,'cmd':cmd};			
 		}
 		if(baseSignal.length==10){
-		
 			var id=0;
-			while( baseSignal.charAt(3-id)=='0')
+			while( baseSignal.substring(4,8).charAt(3-id)=='0')
 			{
 				id++;
 			}
@@ -304,17 +308,14 @@ window.onload=function(){
 				default:
 				break;
 			}
-			return {'ID':id,'src':baseSignal.substring(4,8),'ack':ack};			
+			return {'ID':1111,'src':id,'ack':ack};			
 		}
 		if(baseSignal.length==16){
-			
 			var id=0;
-	
 			while( baseSignal.charAt(3-id)=='0')
 			{
 				id++;
 			}
-	
 			var stat=baseSignal.substring(4,8);
 			switch(stat){
 				case '0010':
@@ -346,9 +347,10 @@ window.onload=function(){
 			
 			setTimeout(function(){Channel.prototype.out(base);},300);
 			
-		}else{
-			Channel.prototype.put(base);
 		}
+		// else{
+			// Channel.prototype.put(base);
+		// }
 		//else{
 			//setTimeout(function(){log('-channel transition failed,resending');},300);
 			//Channel.prototype.put(base);
