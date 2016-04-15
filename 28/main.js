@@ -107,6 +107,7 @@ window.onload=function(){
 	Craft.prototype.destroy=function(){
 		this.spirit.outerHTML='';
 		this.ctrl.outerHTML='';
+		this.monit.outerHTML='';
 		var that = this;
 		craftList = craftList.filter(function(item,index,array){
 			return item.id!=that.id;
