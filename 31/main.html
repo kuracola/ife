@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<link  type='text/css' rel='stylesheet' href='./main.css'>
+		<title>no titile</title>
+	</head>
+	<body>
+		<form class='form-style'>
+			
+			<input  id='studentRadio' type='radio' name='student' value='true' checked='true'>在校生</input>
+			<input  id='workRadio' type='radio' name='student' value='false'>非在校生</input><br/>
+		
+			<div id='chooseSchool' >
+				<span >学校</span>
+				<select id='city'>
+					<option value='beijing'>北京</option>
+					<option value='xian'>西安</option>
+					<option value='nanjing'>南京</option>
+				</select>
+				<select id='school-beijing'>
+					<option value='bjdx'>北京大学</option>
+					<option value='qhdx'>清华大学</option>
+				</select>
+				<select id='school-xian' >
+					<option value='bjdx'>西安交通大学</option>
+					<option value='qhdx'>西北工业大学</option>
+				</select>
+				<select id='school-nanjing'>
+					<option value='bjdx'>南京大学</option>
+					<option value='qhdx'>东南大学</option>
+				</select>
+				<br/>
+			</div>
+			<div id='chooseWork' >
+				<span >就业单位</span>
+				<input  type="text"></input>
+			</div>
+			<button type='button' class='submit'>提交</button>			
+		</form>
+		<script type='text/javascript' src='main.js'></script>
+	</body>
+</html>
