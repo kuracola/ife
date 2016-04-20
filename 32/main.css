@@ -1,0 +1,50 @@
+*{
+	position:relative;
+	margin:0;
+	padding:0;
+	border:0;
+}
+.form-style{
+	width:500px;
+}
+.form-style *{
+
+	margin:10px ;
+	font-size:20px;
+}
+.form-style span.tag{
+	display:inline-block;
+	width:80px;
+	
+}
+.form-style span.tip{
+	margin-left:120px;
+	font-size:12px;
+	color:gray;
+
+}
+.form-style input[type='text'],input[type='password']{
+
+	line-height:30px;
+	font-size:20px;
+	width:250px;
+	height:30px;
+	border:1px solid black;
+	border-radius:5px;
+}
+
+
+
+
+.input-idle:focus{
+	border:1px solid blue;
+}
+.form-style .submit{
+	margin-left:50%;
+	width:80px;
+	padding:5px 20px;
+	font-size:16px;
+	color:white;
+	background:#77f;
+	border-radius:5px;
+}
