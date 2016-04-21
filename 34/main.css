@@ -1,0 +1,73 @@
+*{
+	position:relative;
+	margin:0;
+	padding:0;
+	border:0;
+}
+.canvas{
+	
+	height:700px;
+	width:650px;
+	margin:0px;
+}
+.canvas .border{
+	top:50px;
+	left:50px;
+	position:relative;
+	width:600px;
+	height:600px;
+	border:2px solid black;
+}
+
+.canvas .axis-X{
+	position:absolute;
+	top:0px;
+	font-size:40px;
+}
+.canvas .axis-Y{
+	position:absolute;
+	left:0px;
+	font-size:40px;
+}
+.canvas .line-X{
+	position:absolute;
+	top:59px;
+	width:600px;
+	height:1px;
+	background:gray;
+}
+.canvas .line-Y{
+	position:absolute;
+	left:59px;
+	height:600px;
+	width:1px;
+	background:gray;
+}
+.canvas .block{
+	border-top: 15px blue solid;
+	background:red;
+	position:absolute;
+	height:45px;
+	width:60px;
+	transform:translate(0px,0px) rotate(0deg);
+	transition:all 0.5s;
+}
+.ctrl input{
+	margin-left:40px;
+	height:40px;
+	width:300px;
+	border:1px solid gray;
+	border-radius:10px;
+		font-size:20px;
+	line-height:20px;
+}
+.ctrl button{
+	background:white;
+	margin-left:40px;
+	height:40px;
+	width:80px;
+	border:1px solid gray;
+	border-radius:10px;
+	font-size:20px;
+
+}
