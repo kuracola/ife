@@ -1,0 +1,113 @@
+*{
+	position:relative;
+	margin:0;
+	padding:0;
+	border:0;
+}
+.canvas{
+	
+	height:700px;
+	width:650px;
+	margin:0px;
+}
+.canvas .border{
+	top:50px;
+	left:50px;
+	position:relative;
+	width:600px;
+	height:600px;
+	border:2px solid black;
+}
+
+.canvas .axis-X{
+	position:absolute;
+	top:0px;
+	font-size:40px;
+}
+.canvas .axis-Y{
+	position:absolute;
+	left:0px;
+	font-size:40px;
+}
+.canvas .line-X{
+	position:absolute;
+	top:59px;
+	width:600px;
+	height:1px;
+	background:gray;
+}
+.canvas .line-Y{
+	position:absolute;
+	left:59px;
+	height:600px;
+	width:1px;
+	background:gray;
+}
+.canvas .block{
+	border-top: 15px blue solid;
+	background:red;
+	position:absolute;
+	height:45px;
+	width:60px;
+	transform:translate(0px,0px) rotate(0deg);
+	transition:all 0.5s;
+}
+.canvas .wall{
+
+	background:gray;
+	position:absolute;
+	height:60px;
+	width:60px;
+}
+.ctrl{
+	position:absolute;
+	left:700px;
+	top:10px;
+}
+.ctrl .lineNumber{
+	
+	height:300px;
+	width:30px;
+	background:#aaa;
+	color:white;
+	display:inline-block;
+	margin-left:30px;
+	float:left;
+}
+.ctrl textarea{
+	border-left:red 2px solid;
+	font-size:20px;
+	line-height:20px;
+	width:500px;
+	height:300px;
+	background:black;
+	color:green;
+	display:inline-block;
+	float:left;
+}
+.clear{
+	clear:both;
+}
+.lineNumber{
+	overflow:hidden;
+}
+.number li{
+
+	margin-left:32px;
+	line-height:20px;
+	font-size:16px;
+
+}
+.ctrl button{
+	background:white;
+	margin-left:40px;
+	height:40px;
+	width:80px;
+	border:1px solid gray;
+	border-radius:10px;
+	font-size:20px;
+
+}
+li.wrong{
+	color:red;
+}
