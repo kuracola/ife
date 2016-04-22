@@ -91,13 +91,19 @@ window.onload=function(){
 		}
 		return false;
 	}
-	
+
+
 	document.getElementById('command').onclick=function(e){
 		var cmd=document.getElementById('cli').value;	
 		var cmds=cmd.split('\n');
-		for(var i=0;i<cmds.length;i++){
-			doCMD(cmds[i]);
-		}
+	
+		var time=0;
+		cmds.forEach(function(cmd){
+			setTimeout(function(){
+				doCMD(cmd);
+			},time+=500);
+		});
+		
 		function doCMD(cmd){
 			var params=cmd.split(' ');
 
