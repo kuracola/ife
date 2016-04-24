@@ -41,8 +41,7 @@ window.onload=function(){
 		var block = document.getElementsByClassName('block')[0];
 		var destX=((x+parseInt(block.getAttribute('posX')))>=600||(x+parseInt(block.getAttribute('posX')))<=0)?parseInt(block.getAttribute('posX')):x+parseInt(block.getAttribute('posX'));
 		var destY=((y+parseInt(block.getAttribute('posY')))>=600||(y+parseInt(block.getAttribute('posY')))<=0)?parseInt(block.getAttribute('posY')):y+parseInt(block.getAttribute('posY'));
-		console.log(destX);
-		console.log(destY);
+
 		if(wallMap[destX/60][destY/60]!=undefined)
 		{
 			console.log('ERR 05:所移动的位置有墙');
@@ -149,6 +148,7 @@ window.onload=function(){
 			wallMap[x][y]=wall;
 			document.getElementsByClassName('border')[0].appendChild(wall);
 		}
+		
 	}
 	function buildWall(){
 		var x=getOppAxis()[0];
@@ -158,8 +158,7 @@ window.onload=function(){
 			wall.className='wall';
 			wall.style.left=x*60+'px';
 			wall.style.top=y*60+'px';
-			if(wallMap[x]==undefined)
-				wallMap[x]=[];
+		
 			if(wallMap[x][y]!=undefined)
 			{
 				console.log('ERR 01:指定修墙的位置已经有墙');
@@ -172,31 +171,113 @@ window.onload=function(){
 			console.log('ERR 02:指定修墙的位置超过边界墙');
 		}
 	};
-	var path=[];
+
 	function isOpen(x,y){
 		if( x>=0&& x<=9 && y>=0 && y<=9){
-			if(wallMap[x][y]!=undefined)
-				return true;
+			if(wallMap[x][y]==undefined)
+				if(pathMap[x][y]==undefined)
+				{
+					pathMap[x][y]='1';
+					return true;
+				}
 		}
 		return false;
 	}
-	function childPath(range){
-		var son=[];
+	function isClose(){
 		
 	}
-	function moveTO(dstX,dstY){
+	function childPath(path,x,y){
+		var children={};
+		if(isOpen(x,y-1))
+			children[path+'|TOP']=[x,y-1];
+		else
+			children[path+'|TOP']='FAIL';
+		if(isOpen(x+1,y))
+			children[path+'|RIG']=[x+1,y];
+		else
+			children[path+'|RIG']='FAIL';
+		if(isOpen(x,y+1))
+			children[path+'|BOT']=[x,y+1];
+		else
+			children[path+'|BOT']='FAIL';
+		if(isOpen(x-1,y))
+			children[path+'|LEF']=[x-1,y];
+		else
+			children[path+'|LEF']='FAIL';
+		return children;
+	}
+	function moveTo(dstX,dstY){
+		if(wallMap[dstX][dstY]!=undefined)
+		{
+			console.log('目标地点有墙');
+			return;
+		}
+		pathMap=[];
+		for(var i=0;i<10;i++){
+			pathMap[i]=new Array(10);
+		}
+		path=[];
+		
 		var block = document.getElementsByClassName('block')[0];
-		var x=block.getAttribute('posX');
-		var y=block.getAttribute('posY');
-		var range=[[x,y-1],[x+1,y],[x,y+1].[x-1,y]];
+		var x=parseInt(block.getAttribute('posX'))/60;
+		var y=parseInt(block.getAttribute('posY'))/60;
 		
-		
+		root=childPath("|",x,y);
+		sFlag=0;
+		func(root,dstX,dstY);
+
+
+	}	
+
+	
+	function func(currLevel,dstX,dstY){
+
+		if(sFlag==1)
+			return;
+
+		var nextLevel={};
+		for(var path in currLevel){
+
+			if(currLevel[path]=='FAIL')
+			{
+				continue;
+			}
+			else
+			{
+				console.log('Now'+path+' To '+currLevel[path]);
+				if(currLevel[path][0]==dstX && currLevel[path][1]==dstY){	
+					sFlag=1;
+					var dirs=path.split('|');
+					dirs=dirs.filter(function(e){ return e!=''});
+					console.log('path:'+dirs);
+	
+					var cmdStr='';
+					dirs.forEach(function(e){cmdStr+=('TRA '+e+'\n');});
+	
+					console.log('CMDS:'+cmdStr);
+					doCMDs(cmdStr);
+					return;
+				}
+				else{
+					var branches=childPath(path,currLevel[path][0],currLevel[path][1]);
+					for(var path in branches){
+						nextLevel[path]=branches[path];
+					}
+				}
+				//path.pop();
+			}	
+		}
+		func(nextLevel,dstX,dstY);	
+	}
+
 		
 
-	}
 	document.getElementById('genWall').onclick=genWall;
-	document.getElementById('command').onclick=function(e){
+	document.getElementById('command').onclick=function(){
 		var cmd=document.getElementById('cli').value;	
+		doCMDs(cmd);
+	};
+	function doCMDs(cmd){
 		var cmds=cmd.split('\n');
 	
 		var time=0;
@@ -204,7 +285,7 @@ window.onload=function(){
 			setTimeout(function(){
 				doCMD(cmd);
 			},time+=500);
-		});
+		})
 		
 		function doCMD(cmd){
 			var params=cmd.split(' ');
@@ -221,19 +302,24 @@ window.onload=function(){
 				return;
 			}
 			if(params.length==3)
-			{
+			{	
 				for(var i=0;i<params[2];i++){
 					CMDswitcher(params[0]+' '+params[1]);
 				}
 				return;
 			}
-				
+			if(params[0]=='MOVE'){
+					CMDswitcher(params[0]+' '+params[1],[params[2],params[3]]);
+				}	
 			CMDswitcher(params[0]);
 		}
 		
 		function CMDswitcher(cmd,param1){
 			var block = document.getElementsByClassName('block')[0];
 			switch(cmd){
+				case 'MOVE TO':
+					moveTo(param1[0]-1,param1[1]-1);
+					break;
 				case 'BRU':{
 					paintWall(param1);
 					}
