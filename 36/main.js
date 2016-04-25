@@ -79,7 +79,7 @@ window.onload=function(){
 		var params=cmd.split(' ');
 		if(cmd=='GO' ||cmd=='BUILD' || params[0]=='BRU')
 			return true;
-		if(params.length>3)
+		if(params.length>4)
 			return false;
 		if(params.length==2){
 			if(params[0]=='GO')
@@ -93,12 +93,18 @@ window.onload=function(){
 			return false;
 		}
 		if(params.length==3){
+
 			if(ValidCMD1[params[0]]>0)
 				if(ValidCMD2[params[1]]>0)
 					if(params[2]>0)
 						return true;
 			
 			return false;
+		}
+		if(params.length==4){
+	
+			if(params[0]=='MOVE' && params[1]=='To')
+				return true;
 		}
 		return false;
 	}
@@ -267,6 +273,13 @@ window.onload=function(){
 				//path.pop();
 			}	
 		}
+		if(Object.keys(nextLevel).length==0)
+		{
+			console.log('无法到达该地点');
+			return;
+			
+		}
+			
 		func(nextLevel,dstX,dstY);	
 	}
 
