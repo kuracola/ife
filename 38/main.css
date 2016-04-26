@@ -1,0 +1,39 @@
+*{
+	margin:0;
+	padding:0;
+	position:relative;
+}
+th{
+	background:black;
+	color:white;
+}
+table,th,td {
+  height:50px;
+  text-align:center;
+  padding:5px;
+  min-width:100px;
+  border: 1px solid #999;
+  border-collapse:collapse;
+}
+table th .arrow-up{
+	cursor:pointer;  
+	font-size:20px;
+	height:20px;
+	width:24px;
+	position:absolute;
+	top:0px;
+	padding-top:10px;
+	right:0;
+	
+}
+table th .arrow-down{
+	cursor:pointer;  
+	font-size:20px;
+	height:20px;
+	width:24px;
+	position:absolute;
+	right:0;
+	bottom:0px;
+	padding-top:10px;
+	transform:rotate(180deg);
+}
