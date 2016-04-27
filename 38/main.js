@@ -1,5 +1,17 @@
 window.onload=function(){
-	//算出总分
+	var data=[['姓名','语文','数学','英语','总分'],['小明',90,80,70,240],['小红',60,60,90,210],['Darth Vader',10,100,100,210]];
+	var config={
+		'姓名':0,
+		'语文':1,
+		'数学':1,
+		'英语':1,
+		'总分':1};
+	var t2=document.getElementById('t2');
+	var tableEle= new Table_Sortable(t2,data,config);
+	
+	
+	
+/* 	//算出总分
 	var rows = document.getElementsByTagName('tr');
 	[].forEach.call(rows,function(row){
 		if(row.children[0].nodeName=='TH')
@@ -66,6 +78,6 @@ window.onload=function(){
 	
 	//写比较函数,排序时分别调用
 	
-	
+	 */
 	
 };
